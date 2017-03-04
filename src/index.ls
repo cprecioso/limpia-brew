@@ -4,10 +4,6 @@
 co = require "co"
 {red} = require "chalk"
 
-log = (a, ...b) ~>
-  console.log ...[a, ...b]
-  return b.0
-
 get-installed = (type) ->
   exec "brew #{type}" {+silent}
   |> (.stdout)
@@ -53,6 +49,6 @@ co ->*
   ƒ.difference installed-all, (get-installed \ls)
   |> (* ", ")
   |> red
+  |> (console.log "Uninstalled", _)
 
-.then log "Finished"
-.catch log "Error"
+.catch (console.log "Error", _)
