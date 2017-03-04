@@ -51,6 +51,8 @@ co ->*
     will-remove-leaves = ƒ.difference (get-installed \leaves), will-keep-leaves
 
   ƒ.difference installed-all, (get-installed \ls)
+  |> (* ", ")
+  |> red
 
 .then log "Finished"
 .catch log "Error"
