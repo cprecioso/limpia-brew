@@ -1,6 +1,6 @@
 {
   "name": "limpia-brew",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Recursively remove brew formulae and its dependencies",
   "license": "BSD-3-Clause",
   "keywords": [
