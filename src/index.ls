@@ -8,8 +8,8 @@ log = (a, ...b) ~>
   console.log ...[a, ...b]
   return b.0
 
-get-installed-leaves = ->
-  exec "brew leaves" {+silent}
+get-installed = (type) ->
+  exec "brew #{type}" {+silent}
   |> (.stdout)
   |> (.trim!)
   |> (/ "\n")
@@ -32,7 +32,8 @@ remove-formulae = do ->
     exec "brew uninstall #{formulae-command-list}"
 
 co ->*
-  installed-leaves = get-installed-leaves!
+  installed-leaves = get-installed \leaves
+  installed-all = get-installed \ls
 
   inquiry =
     prompt [{
@@ -47,7 +48,9 @@ co ->*
 
   until will-remove-leaves.length is 0
     yield remove-formulae will-remove-leaves
-    will-remove-leaves = ƒ.difference get-installed-leaves!, will-keep-leaves
+    will-remove-leaves = ƒ.difference (get-installed \leaves), will-keep-leaves
+
+  ƒ.difference installed-all, (get-installed \ls)
 
 .then log "Finished"
 .catch log "Error"
