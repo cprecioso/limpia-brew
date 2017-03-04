@@ -1,35 +1,18 @@
 {
   "name": "limpia-brew",
   "version": "0.1.0",
-  "description": "Remove unwanted brew leaves, recursively, in a single command",
-  "main": "index.js",
-  "bin": "binEntry.js",
-  "files": [
-    "index.js",
-    "binEntry.js"
+  "description": "Recursively remove brew formulae and its dependencies",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "homebrew",
+    "brew",
+    "uninstall"
   ],
-  "preferGlobal": true,
-  "dependencies": {
-    "colors": "^1.1.2",
-    "inquirer": "^1.0.2",
-    "q": "^1.4.1",
-    "shelljs": "^0.7.0"
-  },
-  "devDependencies": {
-    "coffee-script": "^1.10.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "coffee -c --bare index.coffee",
-    "version": "npm run prepublish"
-  },
-  "keywords": [ "homebrew", "brew", "uninstall" ],
   "author": {
     "name": "Carlos Precioso",
     "email": "carlos@carlosprecioso.com",
     "homepage": "https://carlosprecioso.com"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@gitlab.com/cprecioso/limpia-brew.git"
@@ -37,5 +20,25 @@
   "bugs": {
     "url": "https://gitlab.com/cprecioso/limpia-brew/issues"
   },
-  "homepage": "https://gitlab.com/cprecioso/limpia-brew#README"
+  "homepage": "https://gitlab.com/cprecioso/limpia-brew#README",
+  "bin": "lib/index.js",
+  "preferGlobal": true,
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "lsc -cb -o lib/ src/",
+    "preversion": "npm run build",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "co": "^4.6.0",
+    "inquirer": "^3.0.6",
+    "prelude-ls": "^1.1.2",
+    "shelljs": "^0.7.6"
+  },
+  "devDependencies": {
+    "livescript": "^1.5.0"
+  }
 }
