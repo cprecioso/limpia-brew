@@ -21,9 +21,11 @@
     "url": "https://gitlab.com/cprecioso/limpia-brew/issues"
   },
   "homepage": "https://gitlab.com/cprecioso/limpia-brew#README",
-  "bin": "lib/index.js",
+  "main": "lib/index.js",
+  "bin": "bin.js",
   "preferGlobal": true,
   "files": [
+    "bin.js",
     "lib"
   ],
   "scripts": {
