@@ -1,19 +1,19 @@
 {
   "name": "limpia-brew",
   "version": "2.0.0",
-  "description": "Recursively remove brew formulae and its dependencies",
+  "description": "Recursively remove brew formulae and their dependencies",
   "keywords": [
     "brew",
     "homebrew",
     "uninstall"
   ],
-  "homepage": "https://gitlab.com/cprecioso/limpia-brew#README",
+  "homepage": "https://github.com/cprecioso/limpia-brew#README",
   "bugs": {
-    "url": "https://gitlab.com/cprecioso/limpia-brew/issues"
+    "url": "https://github.com/cprecioso/limpia-brew/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/cprecioso/limpia-brew.git"
+    "url": "git+ssh://git@github.com/cprecioso/limpia-brew.git"
   },
   "license": "BSD-3-Clause",
   "author": {
