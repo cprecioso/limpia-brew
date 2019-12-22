@@ -1,46 +1,49 @@
 {
   "name": "limpia-brew",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Recursively remove brew formulae and its dependencies",
-  "license": "BSD-3-Clause",
   "keywords": [
-    "homebrew",
     "brew",
+    "homebrew",
     "uninstall"
   ],
-  "author": {
-    "name": "Carlos Precioso",
-    "email": "carlos@carlosprecioso.com",
-    "homepage": "https://carlosprecioso.com"
+  "homepage": "https://gitlab.com/cprecioso/limpia-brew#README",
+  "bugs": {
+    "url": "https://gitlab.com/cprecioso/limpia-brew/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@gitlab.com/cprecioso/limpia-brew.git"
   },
-  "bugs": {
-    "url": "https://gitlab.com/cprecioso/limpia-brew/issues"
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Carlos Precioso",
+    "email": "carlos@carlosprecioso.com",
+    "homepage": "https://carlosprecioso.com"
   },
-  "homepage": "https://gitlab.com/cprecioso/limpia-brew#README",
-  "main": "lib/index.js",
-  "bin": "bin.js",
-  "preferGlobal": true,
   "files": [
-    "bin.js",
-    "lib"
+    "dist"
   ],
+  "bin": "dist/index.js",
   "scripts": {
-    "build": "lsc -cb -o lib/ src/",
-    "preversion": "npm run build",
-    "prepublish": "npm run build"
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build",
+    "preversion": "npm run build"
   },
   "dependencies": {
-    "chalk": "^1.1.3",
-    "co": "^4.6.0",
-    "inquirer": "^3.0.6",
-    "prelude-ls": "^1.1.2",
-    "shelljs": "^0.7.6"
+    "@thi.ng/dgraph": "^1.1.17",
+    "chalk": "^3.0.0",
+    "execa": "^4.0.0",
+    "inquirer": "^7.0.1"
   },
   "devDependencies": {
-    "livescript": "^1.5.0"
-  }
+    "@cprecioso/tsconfig": "^0.0.4",
+    "@types/inquirer": "^6.5.0",
+    "@types/node": "^12.12.21",
+    "@wessberg/rollup-plugin-ts": "^1.1.83",
+    "rollup": "^1.27.13",
+    "rollup-plugin-terser": "^5.1.3",
+    "typescript": "^3.7.4"
+  },
+  "preferGlobal": true
 }
