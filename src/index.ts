@@ -1,7 +1,7 @@
 import { DGraph } from "@thi.ng/dgraph"
 import chalk from "chalk"
+import enquirer from "enquirer"
 import execa from "execa"
-import inquirer from "inquirer"
 import { InstalledFormula } from "./types"
 
 function* depsOfFormula(formula: InstalledFormula) {
@@ -31,6 +31,8 @@ enum Choice {
   Edit = "e"
 }
 
+const indicator = () => ({ on: "◉", off: "◯" })
+
 void (async function main() {
   const { stdout } = await execa("brew", ["info", "--installed", "--json"])
   const data = JSON.parse(stdout) as InstalledFormula[]
@@ -50,14 +52,14 @@ void (async function main() {
 
   const selectedLeaves = new Set<string>(
     (
-      await inquirer.prompt([
-        {
-          type: "checkbox",
-          name: "selectedLeaves",
-          message: "Choose formulae to remove",
-          choices: [...dgraph.leaves()].map(l => l.name)
-        }
-      ])
+      await enquirer.prompt({
+        type: "multiselect",
+        name: "selectedLeaves",
+        message: "Choose formulae to remove",
+        // @ts-ignore
+        indicator,
+        choices: [...dgraph.leaves()].map(l => l.name)
+      })
     ).selectedLeaves
   )
 
@@ -91,21 +93,20 @@ ${formulaeToRemove
   .map(f => chalk.red("\t" + f.name))
   .sort()
   .join("\n")}`)
-  const { confirmation } = await inquirer.prompt([
-    {
-      type: "expand",
-      name: "confirmation",
-      message: "Continue?",
-      choices: Object.keys(Choice).map(choiceName => {
-        const choiceValue = Choice[choiceName as keyof typeof Choice]
-        return {
-          name: choiceName,
-          value: choiceValue,
-          key: choiceValue
-        }
-      })
-    }
-  ])
+
+  const { confirmation } = await enquirer.prompt({
+    type: "select",
+    name: "confirmation",
+    message: "Uninstall?",
+    choices: Object.keys(Choice).map(choiceName => {
+      const choiceValue = Choice[choiceName as keyof typeof Choice]
+      return {
+        name: choiceValue,
+        message: choiceName,
+        value: choiceValue
+      }
+    })
+  })
 
   switch (confirmation) {
     case Choice.Abort: {
@@ -114,14 +115,14 @@ ${formulaeToRemove
     case Choice.Edit: {
       const whitelist = new Set<string>(
         (
-          await inquirer.prompt([
-            {
-              type: "checkbox",
-              name: "whitelist",
-              message: "Choose formulae to keep",
-              choices: formulaeToRemove.map(f => f.name)
-            }
-          ])
+          await enquirer.prompt({
+            type: "multiselect",
+            name: "whitelist",
+            message: "Choose formulae to keep",
+            // @ts-ignore
+            indicator,
+            choices: formulaeToRemove.map(f => ({ name: f.name }))
+          })
         ).whitelist
       )
       for (const nodeName of whitelist) {
@@ -132,7 +133,8 @@ ${formulaeToRemove
     case Choice.Continue: {
       return formulaeToRemove
     }
+    default: {
+      return []
+    }
   }
-
-  return []
 }
