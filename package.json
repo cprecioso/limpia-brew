@@ -36,19 +36,17 @@
     "formulae",
     "cleanup"
   ],
-  "dependencies": {
-    "@thi.ng/dgraph": "^1.1.17",
-    "chalk": "^3.0.0",
-    "enquirer": "^2.3.2",
-    "execa": "^4.0.0"
-  },
   "devDependencies": {
     "@cprecioso/tsconfig": "^0.0.4",
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^6.0.0",
+    "@thi.ng/dgraph": "^1.1.17",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.12.21",
     "@wessberg/rollup-plugin-ts": "^1.1.83",
+    "chalk": "^3.0.0",
+    "enquirer": "^2.3.2",
+    "execa": "^4.0.0",
     "husky": "^3.1.0",
     "prettier": "^1.19.1",
     "prettier-plugin-package": "^0.3.1",
