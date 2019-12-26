@@ -2,40 +2,40 @@
   "name": "limpia-brew",
   "version": "2.0.1",
   "description": "Recursively remove brew formulae and their dependencies",
-  "license": "BSD-3-Clause",
+  "keywords": [
+    "brew",
+    "cleanup",
+    "formula",
+    "formulae",
+    "homebrew",
+    "uninstall"
+  ],
+  "homepage": "https://github.com/cprecioso/limpia-brew#README",
+  "bugs": {
+    "url": "https://github.com/cprecioso/limpia-brew/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/cprecioso/limpia-brew.git"
   },
+  "license": "BSD-3-Clause",
   "author": {
     "name": "Carlos Precioso",
     "email": "carlos@carlosprecioso.com",
     "homepage": "https://carlosprecioso.com"
   },
-  "homepage": "https://github.com/cprecioso/limpia-brew#README",
-  "bugs": {
-    "url": "https://github.com/cprecioso/limpia-brew/issues"
-  },
+  "files": [
+    "dist"
+  ],
   "bin": "dist/index.js",
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
     "build": "rollup -c",
     "prepare": "npm run build",
     "preversion": "npm run build"
   },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "brew",
-    "homebrew",
-    "uninstall",
-    "formula",
-    "formulae",
-    "cleanup"
-  ],
+  "husky": {
+    "precommit": "pretty-quick --staged"
+  },
   "devDependencies": {
     "@cprecioso/tsconfig": "^0.0.4",
     "@rollup/plugin-commonjs": "^11.0.0",
@@ -49,14 +49,14 @@
     "execa": "^4.0.0",
     "husky": "^3.1.0",
     "prettier": "^1.19.1",
-    "prettier-plugin-package": "^0.3.1",
+    "prettier-plugin-packagejson": "^2.0.6",
     "pretty-quick": "^2.0.1",
     "rollup": "^1.27.13",
     "rollup-plugin-terser": "^5.1.3",
     "typescript": "^3.7.4"
   },
-  "husky": {
-    "precommit": "pretty-quick --staged"
+  "engines": {
+    "node": ">=10"
   },
   "preferGlobal": true
 }
