@@ -5,7 +5,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/cprecioso/limpia-brew.git"
+    "url": "https://github.com/cprecioso/limpia-brew.git"
   },
   "author": {
     "name": "Carlos Precioso",
@@ -17,9 +17,12 @@
     "url": "https://github.com/cprecioso/limpia-brew/issues"
   },
   "bin": "dist/index.js",
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
     "build": "rollup -c",
-    "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
     "preversion": "npm run build"
   },
   "files": [
@@ -28,7 +31,10 @@
   "keywords": [
     "brew",
     "homebrew",
-    "uninstall"
+    "uninstall",
+    "formula",
+    "formulae",
+    "cleanup"
   ],
   "dependencies": {
     "@thi.ng/dgraph": "^1.1.17",
