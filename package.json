@@ -2,34 +2,34 @@
   "name": "limpia-brew",
   "version": "2.0.1",
   "description": "Recursively remove brew formulae and their dependencies",
-  "keywords": [
-    "brew",
-    "homebrew",
-    "uninstall"
-  ],
-  "homepage": "https://github.com/cprecioso/limpia-brew#README",
-  "bugs": {
-    "url": "https://github.com/cprecioso/limpia-brew/issues"
-  },
+  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/cprecioso/limpia-brew.git"
   },
-  "license": "BSD-3-Clause",
   "author": {
     "name": "Carlos Precioso",
     "email": "carlos@carlosprecioso.com",
     "homepage": "https://carlosprecioso.com"
   },
-  "files": [
-    "dist"
-  ],
+  "homepage": "https://github.com/cprecioso/limpia-brew#README",
+  "bugs": {
+    "url": "https://github.com/cprecioso/limpia-brew/issues"
+  },
   "bin": "dist/index.js",
   "scripts": {
     "build": "rollup -c",
     "prepublishOnly": "npm run build",
     "preversion": "npm run build"
   },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "brew",
+    "homebrew",
+    "uninstall"
+  ],
   "dependencies": {
     "@thi.ng/dgraph": "^1.1.17",
     "chalk": "^3.0.0",

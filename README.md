@@ -1,9 +1,14 @@
 # limpia-brew
-This command lets you choose the formulae you don't want, and will uninstall it along any of their dependencies (only those which are not use by other wanted formulae).
 
-This tool can sometimes cause false positives (overzealous uninstalling), so it will ask you to confirm the formulae to remove in each step.
+This command lets you choose the formulae you don't want, and will uninstall it
+along any of their dependencies (only those which are not use by other wanted
+formulae).
+
+This tool can sometimes cause false positives (overzealous uninstalling), so it
+will ask you to confirm the formulae to remove in each step.
 
 # Usage
+
 Just type
 
     $ npx limpia-brew
