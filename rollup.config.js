@@ -1,5 +1,7 @@
 // @ts-check
 
+import commonjs from "@rollup/plugin-commonjs"
+import nodeResolve from "@rollup/plugin-node-resolve"
 import ts from "@wessberg/rollup-plugin-ts"
 import { terser } from "rollup-plugin-terser"
 
@@ -11,11 +13,13 @@ const options = {
     format: "cjs",
     banner: "#!/usr/bin/env node"
   },
-  plugins: [ts(), terser({ toplevel: true })],
-  external: [
-    ...require("module").builtinModules,
-    ...Object.keys(require("./package.json").dependencies)
-  ]
+  plugins: [
+    ts({ transpiler: "babel" }),
+    nodeResolve({ preferBuiltins: true }),
+    commonjs(),
+    terser({ module: true, toplevel: true })
+  ],
+  external: [...require("module").builtinModules]
 }
 
 export default options
